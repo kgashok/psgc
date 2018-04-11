@@ -1,11 +1,11 @@
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
 class Complex {
-public:
+ public:
   int real;
   int imag;
   Complex() {}
@@ -18,32 +18,29 @@ public:
     fs << "(" << c.real << " +i" << c.imag << ") ";
     return fs;
   }
-  
-  
 };
 
-#include <stdio.h> 
+#include <stdio.h>
 
 int main() {
-
   Complex entry[10];
-  
-  FILE* fp = fopen ("data.txt", "r"); 
-  
-  int real, imag, real2, imag2; 
-  int count = 0; 
-  while(fscanf (fp, "(%d + i%d) (%d +i%d)\n", &real, &imag, &real2, &imag2)>0) {
-    cout << real << " " << imag << endl
-        << real2 << " " << imag2 << endl; 
-        
-    int real3 = real + real2; 
-    int imag3 = imag + imag2; 
-    
-    entry[count].real = real3; 
-    entry[count++].imag = imag3;  
+
+  FILE *fp = fopen("data.txt", "r");
+
+  int real, imag, real2, imag2;
+  int count = 0;
+  while (fscanf(fp, "(%d + i%d) (%d +i%d)\n", &real, &imag, &real2, &imag2) >
+         0) {
+    cout << real << " " << imag << endl << real2 << " " << imag2 << endl;
+
+    int real3 = real + real2;
+    int imag3 = imag + imag2;
+
+    entry[count].real = real3;
+    entry[count++].imag = imag3;
   }
 
-  // write the results to output file 
+  // write the results to output file
   ofstream file;
   file.open("data2.txt", ios::out);
 

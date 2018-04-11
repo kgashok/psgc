@@ -1,21 +1,16 @@
-#include <stdio.h> 
+#include <stdio.h>
 
-void halfOf (int val) { 
+void halfOf(int val) {
+  if (val == 0) return;
 
-    if (val == 0) 
-        return; 
-        
-    printf ("%d ", val); 
-    return halfOf (val/2);
-    
+  printf("%d ", val);
+  return halfOf(val / 2);
 }
 
-int main () 
-{
-    int start = 21;
-    
-    halfOf (21); 
-    
-    return 0;
+int main() {
+  int start = 21;
 
+  halfOf(21);
+
+  return 0;
 }

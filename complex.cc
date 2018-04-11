@@ -1,11 +1,11 @@
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
 class Complex {
-public:
+ public:
   int real;
   int imag;
   Complex() {}
@@ -18,11 +18,9 @@ public:
     fs << "(" << c.real << " +i" << c.imag << ") ";
     return fs;
   }
- 
 };
 
 int main() {
-
   int n = 0;
   cout << "No of complex numbers: ";
   cin >> n;

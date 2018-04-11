@@ -1,11 +1,11 @@
-//http://stackoverflow.com/questions/13494417/ftruncate-on-file-opened-with-fopen
+// http://stackoverflow.com/questions/13494417/ftruncate-on-file-opened-with-fopen
 
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #define string_len 1000
 
@@ -16,7 +16,7 @@ int main() {
   char fn[]="write.file";
   struct stat st;
 
-  if ((mega_string = (char*) malloc(string_len)) == NULL) 
+  if ((mega_string = (char*) malloc(string_len)) == NULL)
     perror("malloc() error");
   else if ((file_descriptor = creat(fn, S_IWUSR)) < 0)
     perror("creat() error");
@@ -40,55 +40,55 @@ int main() {
   }
   free(mega_string);
   */
-  
-  FILE *fp = fopen ("write.file", "r"); 
-  char buf; 
-  int count =0;
+
+  FILE *fp = fopen("write.file", "r");
+  char buf;
+  int count = 0;
   while ((buf = fgetc(fp)) != '\0') {
     count++;
   }
-  //printf ("%c %d\n", buf, count); 
-  printf ("Number of bytes read %d\n", count); 
+  // printf ("%c %d\n", buf, count);
+  printf("Number of bytes read %d\n", count);
   buf = fgetc(fp);
-  printf ("Next char %c -- expecting A\n", buf); 
+  printf("Next char %c -- expecting A\n", buf);
   buf = fgetc(fp);
-  printf ("Next char %c -- expecting EOF\n", buf); 
+  printf("Next char %c -- expecting EOF\n", buf);
 
-  buf = fgetc(fp); 
-  printf ("Next char %c -- expecting B\n", buf); 
+  buf = fgetc(fp);
+  printf("Next char %c -- expecting B\n", buf);
 
-  /*if (fputc('B', fp) == '\0') printf ("ERROR writing \n"); 
-  if (fputc('B', fp) == '\0') printf ("ERROR writing \n"); 
-  if (fputc('B', fp) == '\0') printf ("ERROR writing \n"); 
-  if (fputc('B', fp) == '\0') printf ("ERROR writing \n"); 
-  if (fputc('B', fp) == '\0') printf ("ERROR writing \n"); 
-  
-  while ((buf = fgetc(fp)) != '\0') { 
+  /*if (fputc('B', fp) == '\0') printf ("ERROR writing \n");
+  if (fputc('B', fp) == '\0') printf ("ERROR writing \n");
+  if (fputc('B', fp) == '\0') printf ("ERROR writing \n");
+  if (fputc('B', fp) == '\0') printf ("ERROR writing \n");
+  if (fputc('B', fp) == '\0') printf ("ERROR writing \n");
+
+  while ((buf = fgetc(fp)) != '\0') {
     count++;
-    //printf ("%c %d\n", buf, count); 
+    //printf ("%c %d\n", buf, count);
   }
-  printf ("FP value %p\n", fp); 
-  printf ("Number of bytes read %d\n", count); 
+  printf ("FP value %p\n", fp);
+  printf ("Number of bytes read %d\n", count);
   fclose(fp);*/
   return 0;
 }
 
-/*#include <unistd.h> 
+/*#include <unistd.h>
+#include <stdio.h>
 #include <sys/types.h>
-#include <stdio.h> 
 
-int main () { 
+int main () {
 
     FILE *fp = fopen ("test.txt", "rw");
-    printf ("File %p\n", fp); 
+    printf ("File %p\n", fp);
     printf ("truncating...\n");
     fflush(fp);
-    int val = ftruncate(fileno(fp), 30); 
+    int val = ftruncate(fileno(fp), 30);
     fclose(fp);
-    
+
     printf ("return val %d", val);
 
-    
+
 
 
     return 0;
